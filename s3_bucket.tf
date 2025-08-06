@@ -2,11 +2,6 @@ resource "aws_s3_bucket" "bucket" {
   bucket = "${var.project_name}-${var.project_environment}-bucket"
 }
 
-resource "aws_s3_bucket_acl" "bucket_acl" {
-  bucket = aws_s3_bucket.bucket.id
-  acl    = "private"
-}
-
 resource "aws_s3_bucket_public_access_block" "block_public_acls" {
   bucket = aws_s3_bucket.bucket.id
 
