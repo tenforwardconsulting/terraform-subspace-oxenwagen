@@ -1,6 +1,6 @@
 resource "aws_elasticache_replication_group" "redis" {
-  replication_group_id          = "production"
-  description                   = "Production Valkey cluster"
+  replication_group_id          = "${var.project_environment}"
+  description                   = "${var.project_environment} valkey cluster"
   count                         = var.redis_cluster_count > 0 ? 1 : 0
   engine                        = "valkey"
   apply_immediately             = var.redis_apply_immediately
@@ -16,7 +16,7 @@ resource "aws_elasticache_replication_group" "redis" {
 
 resource "aws_elasticache_subnet_group" "redis_subnet" {
   count      = var.redis_cluster_count > 0 ? 1 : 0
-  name       = "production-cache-subnet"
+  name       = "${var.project_environment}-cache-subnet"
   subnet_ids = data.aws_subnets.subnets.ids
 }
 
