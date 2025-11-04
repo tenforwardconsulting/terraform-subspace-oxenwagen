@@ -54,7 +54,7 @@ variable database_allocated_storage { type = number }
 variable database_max_allocated_storage { type = number }
 variable database_iops { type = number }
 variable final_snapshot_identifier { type = string }
-variable snapshot_identifier { 
+variable snapshot_identifier {
   type = string
   default = null
 }
@@ -66,7 +66,7 @@ variable delegated_access_account_id {
 }
 
 # redis.tf
-variable redis_node_count {
+variable redis_cluster_count {
   type = number
   default = 0
 }
