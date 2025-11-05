@@ -1,7 +1,7 @@
 resource "aws_elasticache_replication_group" "redis" {
   replication_group_id          = "${var.project_environment}"
   description                   = "${var.project_environment} valkey cluster"
-  count                         = var.redis_cluster_count > 0 ? 1 : 0
+  count                         = var.redis_cluster_count
   engine                        = "valkey"
   apply_immediately             = var.redis_apply_immediately
   subnet_group_name             = aws_elasticache_subnet_group.redis_subnet[0].name
